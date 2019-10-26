@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>M2_CrimeInfo</artifactId>
+	<description>MicroService 2 holds the Accused Committed crime details</description>
+	<name>MICRO SERVICE 2</name>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>com.tcs.infy</groupId>
+		<artifactId>spring-boot-custom-starter</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+
+	<dependencies>
+
+
+		<dependency>
+			<groupId>com.tcs.infy</groupId>
+			<artifactId>server-common</artifactId>
+		</dependency>
+
+
+	</dependencies>
+
+
+
+
+	<properties>
+		<start-class>com.tcs.infy.MicroServiceThree</start-class>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>${start-class}</mainClass>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+
+		</plugins>
+		<finalName>M2_CrimeInfo</finalName>
+	</build>
+
+
+
+
+</project>
