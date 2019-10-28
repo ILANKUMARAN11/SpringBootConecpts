@@ -14,12 +14,16 @@ public class SpringCloudConfig {
                 .route(r -> r.path("/accused/**")
                         .uri("lb://MicroServiceOne/")
                         .id("MicroServiceOne"))
-//                .route(r -> r.path("/crime/**")
-//                        .uri("lb://MicroServiceTwo/")
-//                        .id("MicroServiceTwo"))
+
+     /*			.route(r -> r.path("/crime/**")
+                        .uri("lb://MicroServiceTwo/")
+                        .id("MicroServiceTwo"))
+
                 .route(r -> r.path("/address/**")
                         .uri("lb://MicroServiceThree/")
                         .id("MicroServiceThree"))
+    */
+
                 .build();
     }
 

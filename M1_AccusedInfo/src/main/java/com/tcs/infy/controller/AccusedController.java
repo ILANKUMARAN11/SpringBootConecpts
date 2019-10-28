@@ -35,7 +35,7 @@ public class AccusedController {
 	AddressRestService addressRestService;
 
 
-	@GetMapping(value = "/restTemplate/name/{name}/ranjani.brio",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/restTemplate/name/{name}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
 	public Map findByAccusedNameRestTemplate(@PathVariable("name") String name)
 	{
 		Map mp=new HashMap();
@@ -46,7 +46,7 @@ public class AccusedController {
 	}
 
 	
-	@GetMapping(value = "/feign/name/{name}/ranjani.brio",produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/feign/name/{name}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
     public Map findByAccusedNameFeign(@PathVariable("name") String name)
     {
  		Map mp=new HashMap();
@@ -56,7 +56,7 @@ public class AccusedController {
     }
 
 
-	@PostMapping(value = "/save/both/Accused/Crime/ranjani.brio",produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/save/both/Accused/Crime/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
 	public Map saveBoth(@RequestBody AccusedCrimeVo accusedCrimeVo)
 	{
 		Map mp=new HashMap();

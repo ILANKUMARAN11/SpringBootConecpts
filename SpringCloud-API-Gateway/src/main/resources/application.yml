@@ -1,0 +1,35 @@
+server:
+  port: 8079
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+      - id: MicroServiceTwo
+        uri: lb://MicroServiceTwo/
+        predicates:
+        - Path=/crime/**
+        
+      - id: MicroServiceThree
+        uri: lb://MicroServiceThree/
+        predicates:
+        - Path=/address/**
+  application:
+    name: Spring-Cloud-Api-GateWaY
+  jmx:
+    default-domain: Spring-Cloud-Api-GateWaY
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    lease-renewal-interval-in-seconds: 10
+    
+    
+  
