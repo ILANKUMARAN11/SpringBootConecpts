@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @EnableSwagger2
+@RequestMapping("/address")
 public class AddressController {
 	
 	@Autowired
@@ -22,7 +24,7 @@ public class AddressController {
 
 
 		//http://<HOSTNAME>:<PORT>/crime/name/<NAME>/ilan.brio
-		@GetMapping(value = "/address/by/name/{name}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
+		@GetMapping(value = "/name/{name}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
 		public List<Address> findByAccusedName(@PathVariable("name") String name)
 		{
 			return addressService.findByAccusedName(name);

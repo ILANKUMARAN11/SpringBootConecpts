@@ -7,17 +7,13 @@ import com.tcs.infy.entity.Crime;
 import com.tcs.infy.service.CrimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @EnableSwagger2
+@RequestMapping("/crime")
 public class CrimeController {
 	
 	@Autowired
@@ -25,14 +21,14 @@ public class CrimeController {
 
 
 		//http://<HOSTNAME>:<PORT>/crime/name/<NAME>/ilan.brio
-		@GetMapping(value = "/crime/name/{name}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
+		@GetMapping(value = "/name/{name}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
 		public List<Crime> findByAccusedName(@PathVariable("name") String name)
 		{
 			return accusedService.findByAccusedName(name);
 		}
 	
 		//http://<HOSTNAME>:<PORT>/crime/count/<COUNT>/ilan.brio	
-	 	@GetMapping(value = "/crime/count/{countNo}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
+	 	@GetMapping(value = "/count/{countNo}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
 	    public List<Crime> crimeCountGreaterThan(@PathVariable("countNo") int count)
 	    {
 	 		return accusedService.crimeCountGreaterThan(count);
@@ -41,7 +37,7 @@ public class CrimeController {
 
 
 	 	//http://<HOSTNAME>:<PORT>/crime/name/count/ilan.brio?accusedName=<ACCUSED_NAME>&count=<ARRESTED_COUNT>
-	 	@GetMapping(value = "/crime/name/count/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
+	 	@GetMapping(value = "/name/count/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
 	    public List<Crime> findByAccusedNameAndCrimeCount(@RequestParam("accusedName") String name,@RequestParam(value = "arrestedCount") int count)
 	    {
     		return accusedService.findByAccusedNameAndCrimeCount(name,count);

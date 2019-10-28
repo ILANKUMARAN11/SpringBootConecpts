@@ -55,7 +55,7 @@
 
 
 	<properties>
-		<start-class>com.tcs.infy.SpringCloudGateway</start-class>
+		<start-class>com.tcs.infy.SpringCloudApiGateway</start-class>
 	</properties>
 
 

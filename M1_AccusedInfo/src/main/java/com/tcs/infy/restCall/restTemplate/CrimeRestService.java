@@ -58,7 +58,7 @@ public class CrimeRestService {
     public Crime saveByCrime(Crime crime)
     {
         HttpEntity<Crime> request = new HttpEntity<>(crime);
-        ResponseEntity<Crime> rs1 = restTemplate.postForEntity(crimeMicroService+"/save/only/one/crime/ilan.brio", request, Crime.class);
+        ResponseEntity<Crime> rs1 = restTemplate.postForEntity(crimeMicroService+"/crime/save/only/one/crime/ilan.brio", request, Crime.class);
         return rs1.getBody();
     }
 

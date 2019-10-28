@@ -23,7 +23,7 @@ public class AddressRestService {
     @HystrixCommand(fallbackMethod = "addressLstFallback", commandKey="HystrixCommandKey")
     public List<Address> findByAddressNameOnly(String name)
     {
-        ResponseEntity<Address[]> rs1= restTemplate.getForEntity(addressMicroService+"/address/by/name/"+name+"/ilan.brio",Address[].class);
+        ResponseEntity<Address[]> rs1= restTemplate.getForEntity(addressMicroService+"/address/name/"+name+"/ilan.brio",Address[].class);
         return Arrays.asList(rs1.getBody());
     }
 

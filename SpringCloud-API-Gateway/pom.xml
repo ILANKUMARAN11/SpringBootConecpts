@@ -24,10 +24,6 @@
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -66,7 +62,7 @@
 
 
     <properties>
-        <start-class>com.tcs.infy.SpringCloudGateway</start-class>
+        <start-class>com.tcs.infy.SpringCloudApiGateway</start-class>
     </properties>
 
 

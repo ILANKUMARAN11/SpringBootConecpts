@@ -9,16 +9,16 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class SpringCloudGateway extends SpringBootServletInitializer {
+public class SpringCloudApiGateway extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCloudGateway.class, args);
+		SpringApplication.run(SpringCloudApiGateway.class, args);
 	}
 
 
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(SpringCloudGateway.class);
+		return application.sources(SpringCloudApiGateway.class);
 	}
 }
