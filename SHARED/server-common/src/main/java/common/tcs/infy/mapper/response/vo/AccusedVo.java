@@ -1,26 +1,28 @@
 package common.tcs.infy.mapper.response.vo;
 
-public class Accused {
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel
+public class AccusedVo {
 	
 	
 	private String accusedName;
-	
+
+	@ApiModelProperty(position = 1, required = true, value = "29")
 	private int age;
 	
 	private String gender;
 	
-	private String address;
-	
 	private String adharNo;
 
-	public Accused(){}
+	public AccusedVo(){}
 	
 	
-	public Accused(String accusedName,int age,String gender,String address,String adharNo){
+	public AccusedVo(String accusedName, int age, String gender, String adharNo){
 		this.accusedName=accusedName;
 		this.age=age;
 		this.gender=gender;
-		this.address=address;
 		this.adharNo=adharNo;
 	}
 	
@@ -47,14 +49,6 @@ public class Accused {
 
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	public String getAdharNo() {

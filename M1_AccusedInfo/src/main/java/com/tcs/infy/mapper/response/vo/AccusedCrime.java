@@ -1,14 +1,14 @@
 package com.tcs.infy.mapper.response.vo;
 
 import com.tcs.infy.entity.Accused;
-import common.tcs.infy.mapper.response.vo.Crime;
+import common.tcs.infy.mapper.response.vo.CrimeVo;
 
-public class AccusedCrimeVo {
+public class AccusedCrime {
 
     private Accused accused;
-    private Crime crime;
+    private CrimeVo crime;
 
-    public AccusedCrimeVo(){}
+    public AccusedCrime(){}
 
     public Accused getAccused() {
         return accused;
@@ -18,11 +18,11 @@ public class AccusedCrimeVo {
         this.accused = accused;
     }
 
-    public Crime getCrime() {
+    public CrimeVo getCrime() {
         return crime;
     }
 
-    public void setCrime(Crime crime) {
+    public void setCrime(CrimeVo crime) {
         this.crime = crime;
     }
 }

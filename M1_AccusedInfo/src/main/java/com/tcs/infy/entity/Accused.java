@@ -1,13 +1,18 @@
 package com.tcs.infy.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@ApiModel
 @Entity
 public class Accused {
-	
+
+	@JsonIgnore
 	@Id
 	@GeneratedValue
 	private long id;
@@ -75,9 +80,9 @@ public class Accused {
 	public void setAdharNo(String adharNo) {
 		this.adharNo = adharNo;
 	}
-	
-	
-	
-	
+
+
+
+
 
 }

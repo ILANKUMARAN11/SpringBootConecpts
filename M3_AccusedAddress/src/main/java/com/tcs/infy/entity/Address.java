@@ -1,5 +1,7 @@
 package com.tcs.infy.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,7 +13,8 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Address {
-	
+
+	@JsonIgnore
 	@Id
 	@GeneratedValue
 	private long id;

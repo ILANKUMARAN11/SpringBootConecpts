@@ -1,26 +1,28 @@
 package com.tcs.infy.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.tcs.infy.entity.Accused;
-import com.tcs.infy.mapper.response.vo.AccusedCrimeVo;
+import com.tcs.infy.mapper.response.vo.AccusedCrime;
 import com.tcs.infy.restCall.feign.CrimeFeignClient;
 import com.tcs.infy.restCall.restTemplate.AddressRestService;
 import com.tcs.infy.restCall.restTemplate.CrimeRestService;
 import com.tcs.infy.service.AccusedService;
 
-import common.tcs.infy.mapper.response.vo.Crime;
+import common.tcs.infy.mapper.response.vo.AccusedVo;
+import common.tcs.infy.mapper.response.vo.CrimeVo;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
+@Api(value = "CrimeVo", description = "ACCUSED DATA INFO",position = 66)
 @RestController
-@EnableSwagger2
 @RequestMapping("/accused")
-public class AccusedController {
+public class AccusedController extends VoMapper{
 
 	@Autowired
 	AccusedService accusedService;
@@ -35,13 +37,24 @@ public class AccusedController {
 	AddressRestService addressRestService;
 
 
+	@ApiOperation(value = "API by RestTemplate", notes="fetch AccusedVo Info",nickname = "accused Info")
+	@ApiResponses(value = {
+			@ApiResponse(code = 500, message = "Server error !!!"),
+			@ApiResponse(code = 404, message = "Service not found !!!"),
+			@ApiResponse(code = 401, message = "Unauthorized access !!!"),
+			@ApiResponse(code = 403, message = "Forbidden access !!!"),
+			@ApiResponse(code = 200, message = "Successful retrieval !!!", responseContainer = "List") })
 	@GetMapping(value = "/restTemplate/name/{name}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
-	public Map findByAccusedNameRestTemplate(@PathVariable("name") String name)
+	public Map findByAccusedNameRestTemplate(@ApiParam(value = "Accused name as input", required = true, defaultValue = "ILAN") @PathVariable("name") String name)
 	{
 		Map mp=new HashMap();
-		mp.put("Accused Info",accusedService.findByAccusedName(name));
-		mp.put("Crime Info",crimeRestTemplate.findByCrimeAccusedNameOnly(name));
-		mp.put("Address Info",addressRestService.findByAddressNameOnly(name));
+		List<AccusedVo> accusedVoList=accusedService.findByAccusedName(name).stream().map(p->{
+			return entityToVo.apply(p);
+		}).collect(Collectors.toList());
+
+		mp.put("AccusedVo Info",accusedVoList);
+		mp.put("CrimeVo Info",crimeRestTemplate.findByCrimeAccusedNameOnly(name));
+		mp.put("AddressVo Info",addressRestService.findByAddressNameOnly(name));
 		return mp;
 	}
 
@@ -50,22 +63,28 @@ public class AccusedController {
     public Map findByAccusedNameFeign(@PathVariable("name") String name)
     {
  		Map mp=new HashMap();
- 		mp.put("Accused Info",accusedService.findByAccusedName(name));
- 		mp.put("Crime Info ",crimeFeign.findByAccusedName(name));
+		List<AccusedVo> accusedVoList=accusedService.findByAccusedName(name).stream().map(p->{
+			return entityToVo.apply(p);
+		}).collect(Collectors.toList());
+ 		mp.put("AccusedVo Info",accusedVoList);
+ 		mp.put("CrimeVo Info ",crimeFeign.findByAccusedName(name));
  		return mp;
     }
 
 
-	@PostMapping(value = "/save/both/Accused/Crime/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
-	public Map saveBoth(@RequestBody AccusedCrimeVo accusedCrimeVo)
+	@PostMapping(value = "/save/both/AccusedVo/CrimeVo/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
+	public Map saveBoth(@RequestBody AccusedCrime accusedCrimeVo)
 	{
 		Map mp=new HashMap();
-		Accused accused=accusedService.save(accusedCrimeVo.getAccused());
-		Crime crime=crimeRestTemplate.saveByCrime(accusedCrimeVo.getCrime());
-		mp.put("Accused SAVED",accused);
-		mp.put("Crime SAVED",crime);
+		AccusedVo accusedVo=entityToVo.apply(accusedService.save(accusedCrimeVo.getAccused()));
+		CrimeVo crime=crimeRestTemplate.saveByCrime(accusedCrimeVo.getCrime());
+		mp.put("AccusedVo SAVED",accusedVo);
+		mp.put("CrimeVo SAVED",crime);
 		return mp;
 	}
+
+
+
 
 
 

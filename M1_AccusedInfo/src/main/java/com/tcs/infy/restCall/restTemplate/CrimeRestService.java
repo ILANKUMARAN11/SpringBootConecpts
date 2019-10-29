@@ -2,8 +2,7 @@ package com.tcs.infy.restCall.restTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import common.tcs.infy.mapper.response.vo.Crime;
-import common.tcs.infy.tcs.infy.response.ResponseData;
+import common.tcs.infy.mapper.response.vo.CrimeVo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -30,9 +29,9 @@ public class CrimeRestService {
             @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value="5000")
 
     })
-    public List<Crime> findByCrimeAccusedNameOnly(String name)
+    public List<CrimeVo> findByCrimeAccusedNameOnly(String name)
     {
-        ResponseEntity<Crime[]>  rs1= restTemplate.getForEntity(crimeMicroService+"/crime/name/"+name+"/ilan.brio",Crime[].class);
+        ResponseEntity<CrimeVo[]>  rs1= restTemplate.getForEntity(crimeMicroService+"/crime/name/"+name+"/ilan.brio",CrimeVo[].class);
         return Arrays.asList(rs1.getBody());
     }
 
@@ -43,33 +42,33 @@ public class CrimeRestService {
             @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value="5000")
 
     })
-    public List<Crime> findByCrimeAccusedNameAndCount(String name)
+    public List<CrimeVo> findByCrimeAccusedNameAndCount(String name)
     {
         UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl(crimeMicroService+"/crime/name/count/ilan.brio")
                 .queryParam("accusedName", "ILAN")
                 .queryParam("arrestedCount", 1);
 
-        ResponseEntity<Crime[]>  rs2= restTemplate.getForEntity(uri.toUriString(),Crime[].class);
+        ResponseEntity<CrimeVo[]>  rs2= restTemplate.getForEntity(uri.toUriString(),CrimeVo[].class);
 
         return Arrays.asList(rs2.getBody());
     }
 
     @HystrixCommand(fallbackMethod = "crimeFallback")
-    public Crime saveByCrime(Crime crime)
+    public CrimeVo saveByCrime(CrimeVo crime)
     {
-        HttpEntity<Crime> request = new HttpEntity<>(crime);
-        ResponseEntity<Crime> rs1 = restTemplate.postForEntity(crimeMicroService+"/crime/save/only/one/crime/ilan.brio", request, Crime.class);
+        HttpEntity<CrimeVo> request = new HttpEntity<>(crime);
+        ResponseEntity<CrimeVo> rs1 = restTemplate.postForEntity(crimeMicroService+"/crime/save/only/one/crime/ilan.brio", request, CrimeVo.class);
         return rs1.getBody();
     }
 
 
-    private Crime crimeFallback(Crime crime)
+    private CrimeVo crimeFallback(CrimeVo crime)
     {
         return crime;
     }
 
-    private List<Crime> crimeLstFallback(String name)
+    private List<CrimeVo> crimeLstFallback(String name)
     {
-        return Arrays.asList(new Crime("Dummy","Dummy",0,new Date()));
+        return Arrays.asList(new CrimeVo("Dummy","Dummy",0,new Date()));
     }
 }

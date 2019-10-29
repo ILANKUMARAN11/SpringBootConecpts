@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.tcs.infy.controller.VoMapper;
 import com.tcs.infy.entity.Accused;
 import com.tcs.infy.repository.AccusedRepo;
 import com.tcs.infy.service.AccusedService;

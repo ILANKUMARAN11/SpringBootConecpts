@@ -1,10 +1,10 @@
 package common.tcs.infy.mapper.response.vo;
 
 
-public class Address {
-	
+import io.swagger.annotations.ApiModel;
 
-	private long id;
+@ApiModel
+public class AddressVo {
 
 	private String accusedName;
 
@@ -25,9 +25,9 @@ public class Address {
 	
 
 	
-	public Address(){}
+	public AddressVo(){}
 	
-	public Address(String accusedName, String doorNo, String streetName, String area, String district, String state, String pinCode, String country){
+	public AddressVo(String accusedName, String doorNo, String streetName, String area, String district, String state, String pinCode, String country){
 		this.accusedName=accusedName;
 		this.doorNo=doorNo;
 		this.streetName=streetName;
@@ -39,13 +39,7 @@ public class Address {
 	}
 
 
-	public long getId() {
-		return id;
-	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getAccusedName() {
 		return accusedName;

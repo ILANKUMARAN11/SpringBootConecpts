@@ -1,8 +1,11 @@
 package common.tcs.infy.mapper.response.vo;
 
+import io.swagger.annotations.ApiModel;
+
 import java.util.Date;
 
-public class Crime {
+@ApiModel
+public class CrimeVo {
 	
 	
 	private String accusedName;
@@ -13,9 +16,9 @@ public class Crime {
 	
 	private Date arrestedOn;
 	
-	public Crime(){}
+	public CrimeVo(){}
 	
-	public Crime(String accusedName,String crime,int crimeCount,Date arrestedOn){
+	public CrimeVo(String accusedName, String crime, int crimeCount, Date arrestedOn){
 		this.accusedName=accusedName;
 		this.crime=crime;
 		this.crimeCount=crimeCount;
