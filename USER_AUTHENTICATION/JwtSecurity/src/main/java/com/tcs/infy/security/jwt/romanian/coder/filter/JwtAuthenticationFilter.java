@@ -1,8 +1,9 @@
 package com.tcs.infy.security.jwt.romanian.coder.filter;
 
 import com.auth0.jwt.JWT;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tcs.infy.model.LoginViewModel;
+import com.tcs.infy.model.AuthenticationRequestVo;
 import com.tcs.infy.security.UserPrincipal;
 import com.tcs.infy.security.jwt.romanian.coder.JwtProperties;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -41,9 +43,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
         // Grab credentials and map them to login viewmodel
-        LoginViewModel credentials = null;
+        AuthenticationRequestVo credentials = null;
         try {
-            credentials = new ObjectMapper().readValue(request.getInputStream(), LoginViewModel.class);
+            credentials = new ObjectMapper().readValue(request.getInputStream(), AuthenticationRequestVo.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,7 +73,25 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withExpiresAt(new Date(System.currentTimeMillis() + jwtProperties.getExpiryTime()))
                 .sign(HMAC512(jwtProperties.getSecretKey().getBytes()));
 
+
+        String userPrincipalJsonString="";
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String json = mapper.writeValueAsString(principal);
+            userPrincipalJsonString=json;
+            //System.out.println(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+
         // Add token in response
         response.addHeader(jwtProperties.getHeader(), jwtProperties.getTokenPrefix() +  token);
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        out.print(userPrincipalJsonString);
+        out.flush();
+
     }
 }

@@ -1,8 +1,11 @@
 package com.tcs.infy.model;
 
-public class LoginViewModel {
+public class AuthenticationRequestVo {
+
     private String username;
     private String password;
+
+    public AuthenticationRequestVo(){ }
 
     public String getPassword() {
         return password;
