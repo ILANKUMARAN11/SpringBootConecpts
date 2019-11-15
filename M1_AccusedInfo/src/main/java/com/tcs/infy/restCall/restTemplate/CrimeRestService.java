@@ -23,11 +23,10 @@ public class CrimeRestService {
 
 
     @HystrixCommand(fallbackMethod ="crimeLstFallback" ,commandProperties = {
-            @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value="2000"),
-            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold", value="6"),
-            @HystrixProperty(name="circuitBreaker.errorThresholdPercentage", value="50"),
-            @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value="5000")
-
+            @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value="2000"), // Wait for 2 sec for the response, If response is not available until 2 sec consider something is wrong with downStream system and it is failed.
+            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold", value="6"), // Look at last n request. In our case look at last 6 request whether to break the circuit or continue sending the request to downStream.
+            @HystrixProperty(name="circuitBreaker.errorThresholdPercentage", value="50"), // So as we look at last 6 response, If 3 is failing that is our 50% of errorThresholdPercentage.
+            @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value="5000") // How long the circuit breaker is going to sleep.
     })
     public List<CrimeVo> findByCrimeAccusedNameOnly(String name)
     {

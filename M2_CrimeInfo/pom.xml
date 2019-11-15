@@ -29,43 +29,15 @@
 
 
 
-
-	<properties>
-		<start-class>com.tcs.infy.MicroServiceThree</start-class>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	</properties>
-
-
 	<build>
-		<plugins>
 
+		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>${start-class}</mainClass>
-				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
-
-
 		</plugins>
+
 		<finalName>M2_CrimeInfo</finalName>
 	</build>
 

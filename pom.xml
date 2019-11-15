@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.9.RELEASE</version>
+		<version>2.1.10.RELEASE</version>
 	</parent>
 
 	<modules>
@@ -48,24 +48,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
 
-		<SPRING-BOOT-VERSION>2.1.9.RELEASE</SPRING-BOOT-VERSION>
+		<SPRING-BOOT-VERSION>2.1.10.RELEASE</SPRING-BOOT-VERSION>
 		<spring-boot-maven-plugin>${SPRING-BOOT-VERSION}</spring-boot-maven-plugin>
 		<spring-boot-admin.version>2.1.6</spring-boot-admin.version>
 		<swagger>2.9.2</swagger>
 		<java-jwt>3.8.3</java-jwt>
     </properties>
 
-
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-		</repository>
-	</repositories>
 
 
 </project>

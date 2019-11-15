@@ -54,39 +54,16 @@
 	</dependencyManagement>
 
 
-	<properties>
-		<start-class>com.tcs.infy.SpringCloudApiGateway</start-class>
-	</properties>
-
 
 	<build>
-		<plugins>
 
+		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>${start-class}</mainClass>
-				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
-
 		</plugins>
+
 		<finalName>ZuulApiGateway</finalName>
 	</build>
 
