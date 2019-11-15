@@ -3,10 +3,6 @@ package com.tcs.infy.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-import com.tcs.infy.entity.Address;
-import com.tcs.infy.service.AddressService;
-import common.tcs.infy.mapper.response.vo.AddressVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import com.tcs.infy.service.AddressService;
+
+import common.tcs.infy.mapper.response.vo.AddressVo;
 
 @RestController
 @RequestMapping("/address")

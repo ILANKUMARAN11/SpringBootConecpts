@@ -5,7 +5,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.tcs.infy.entity.Accused;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.tcs.infy.mapper.response.vo.AccusedCrime;
 import com.tcs.infy.restCall.feign.CrimeFeignClient;
 import com.tcs.infy.restCall.restTemplate.AddressRestService;
@@ -14,10 +22,11 @@ import com.tcs.infy.service.AccusedService;
 
 import common.tcs.infy.mapper.response.vo.AccusedVo;
 import common.tcs.infy.mapper.response.vo.CrimeVo;
-import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api(value = "CrimeVo", description = "ACCUSED DATA INFO",position = 66)
 @RestController

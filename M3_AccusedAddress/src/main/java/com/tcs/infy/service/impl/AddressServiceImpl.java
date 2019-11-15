@@ -1,4 +1,4 @@
-package com.tcs.infy.serviceImpl;
+package com.tcs.infy.service.impl;
 
 import java.util.List;
 
