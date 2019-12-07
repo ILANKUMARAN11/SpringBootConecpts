@@ -5,18 +5,15 @@ import java.util.List;
 
 import com.tcs.infy.entity.Accused;
 import com.tcs.infy.repository.AccusedRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DbInit implements CommandLineRunner {
-	
-    private AccusedRepo accusedRepo;
-   
 
-    public DbInit(AccusedRepo accusedRepo) {
-        this.accusedRepo = accusedRepo;
-    }
+    @Autowired
+    private AccusedRepo accusedRepo;
 
     @Override
     public void run(String... args) {

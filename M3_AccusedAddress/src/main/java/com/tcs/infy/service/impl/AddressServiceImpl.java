@@ -21,8 +21,6 @@ public class AddressServiceImpl implements AddressService
 	@Autowired
     AddressRepo addressRepo;
 	
-
-	
 	
 	
 	@Transactional

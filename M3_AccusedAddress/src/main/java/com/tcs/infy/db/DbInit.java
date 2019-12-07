@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.tcs.infy.entity.Address;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +15,11 @@ import com.tcs.infy.repository.AddressRepo;
 @Service
 public class DbInit implements CommandLineRunner {
 	
+	@Autowired
     private AddressRepo addressRepo;
    
+    
 
-    public DbInit(AddressRepo addressRepo) {
-        this.addressRepo = addressRepo;
-    }
 
     @Override
     public void run(String... args) {
