@@ -3,14 +3,12 @@ package com.tcs.infy.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.tcs.infy.entity.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.tcs.infy.service.AddressService;
 
@@ -40,7 +38,12 @@ public class AddressController extends VoMapper{
 			//return ResponseEntity.ok().body(lstAddVo);
 			return ResponseEntity.ok(lstAddVo);
 		}
-		
-		
+
+
+		@PostMapping(value = "/save/address/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
+		public Address saveAddress(@RequestBody Address address)
+		{
+			return addressService.save(address);
+		}
 		
 }

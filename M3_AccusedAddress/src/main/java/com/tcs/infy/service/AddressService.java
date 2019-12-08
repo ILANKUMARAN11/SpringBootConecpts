@@ -6,7 +6,7 @@ import com.tcs.infy.entity.Address;
 
 public interface AddressService {
 	
-	Address save(Address crime);
+	Address save(Address address);
 	
 	List<Address> saveAll(List<Address> addressList );
 
