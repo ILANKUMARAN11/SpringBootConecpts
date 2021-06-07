@@ -26,12 +26,12 @@ public class DbInit implements CommandLineRunner {
         this.crimeRepo.deleteAll();
 
         // Crete users
-        Crime ilan = new Crime("ILAN","Murder",1,new Date());
-        Crime gokul = new Crime("GOKUL","Bomb Blast",2,new Date());
-        Crime kiruthika = new Crime("KIRUTHIKA","Chain Snatching",12,new Date());
-        Crime vela = new Crime("VELAYUTHAM","Robbery",23,new Date());
-        Crime manoj = new Crime("MANOJ","Chain snatching",34,new Date());
-        
+        Crime ilan = Crime.builder().accusedName("ILAN").crime("Murder").crimeCount(1).arrestedOn(new Date()).build();
+        Crime gokul = Crime.builder().accusedName("GOKUL").crime("Bomb Blast").crimeCount(2).arrestedOn(new Date()).build();
+        Crime kiruthika = Crime.builder().accusedName("KIRUTHIKA").crime("Chain Snatching").crimeCount(12).arrestedOn(new Date()).build();
+        Crime vela = Crime.builder().accusedName("VELAYUTHAM").crime("Robbery").crimeCount(23).arrestedOn(new Date()).build();
+        Crime manoj = Crime.builder().accusedName("MANOJ").crime("Chain snatching").crimeCount(34).arrestedOn(new Date()).build();
+
 
         List<Crime> crimeLst = Arrays.asList(ilan,gokul,kiruthika,vela,manoj);
 

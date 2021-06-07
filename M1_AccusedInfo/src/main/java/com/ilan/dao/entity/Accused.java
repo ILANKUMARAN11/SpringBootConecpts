@@ -6,7 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Accused {
 
@@ -26,61 +34,5 @@ public class Accused {
 
 	@Column
 	private String adharNo;
-	
-	public Accused(){}
-	
-	
-	public Accused(String accusedName,int age,String gender,String adharNo){
-		this.accusedName=accusedName;
-		this.age=age;
-		this.gender=gender;
-		this.adharNo=adharNo;
-	}
-	
-	
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getAccusedName() {
-		return accusedName;
-	}
-
-	public void setAccusedName(String accusedName) {
-		this.accusedName = accusedName;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getAdharNo() {
-		return adharNo;
-	}
-
-	public void setAdharNo(String adharNo) {
-		this.adharNo = adharNo;
-	}
-
-
-
-
 
 }

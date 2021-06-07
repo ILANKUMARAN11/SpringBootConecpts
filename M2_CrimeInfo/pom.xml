@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.6.RELEASE</version>
+		<version>2.3.11.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -83,6 +83,12 @@
 			<optional>true</optional>
 		</dependency>
 
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 
 		<!-- io.springfox setup  -->
 		<dependency>
@@ -101,13 +107,14 @@
 			<version>${swagger}</version>
 		</dependency>
 
+
 	</dependencies>
 
 	<properties>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Hoxton.SR4</spring-cloud.version>
-		<spring-boot-admin.version>2.2.1</spring-boot-admin.version>
-		<swagger>3.0.0-SNAPSHOT</swagger>
+		<spring-cloud.version>Hoxton.SR11</spring-cloud.version>
+		<spring-boot-admin.version>2.3.1</spring-boot-admin.version>
+		<swagger>2.10.0</swagger>
 	</properties>
 
 	<dependencyManagement>
@@ -143,13 +150,7 @@
 		<finalName>M2_CrimeInfo</finalName>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>jcenter-snapshots</id>
-			<name>jcenter</name>
-			<url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
-		</repository>
-	</repositories>
+
 
 
 

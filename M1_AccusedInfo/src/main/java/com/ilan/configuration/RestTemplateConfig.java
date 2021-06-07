@@ -18,7 +18,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 public class RestTemplateConfig
 {
 
-	@Primary
+
 	@LoadBalanced
 	@Bean
 	RestTemplate restTemplate(){
@@ -27,12 +27,6 @@ public class RestTemplateConfig
 //		clientHttpRequestFactory.setReadTimeout(9000);
 //		return new RestTemplate(clientHttpRequestFactory);
 
-		return new RestTemplate();
-	}
-
-
-	@Bean(name = "TestRest")
-	RestTemplate restTemplateConfig(){
 		return new RestTemplate();
 	}
 

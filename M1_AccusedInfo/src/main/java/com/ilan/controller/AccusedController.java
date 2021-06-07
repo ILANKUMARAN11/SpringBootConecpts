@@ -36,8 +36,6 @@ public class AccusedController implements AccusedApi {
 	@Autowired
     CrimeRestService crimeRestTemplate;
 
-	
-
 
 	@Override
 	public Map findByAccusedNameRestTemplate(@PathVariable("name") String name)

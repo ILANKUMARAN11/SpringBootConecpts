@@ -22,12 +22,12 @@ public class DbInit implements CommandLineRunner {
         this.accusedRepo.deleteAll();
 
         // Crete users
-        Accused ilan = new Accused("ILAN",29,"Male","ASTTT");
-        Accused gokul = new Accused("GOKUL",12,"Male","ADD222");
-        Accused kiruthika = new Accused("KIRUTHIKA",2,"Female","GTT");
-        Accused vela = new Accused("VELAYUTHAM",5,"Male","HTYU");
-        Accused manoj = new Accused("MANOJ",3,"Male","TYUUII");
-        
+        Accused ilan =  Accused.builder().accusedName("ILAN").age(29).gender("Male").adharNo("ASTTT").build();
+        Accused gokul = Accused.builder().accusedName("GOKUL").age(12).gender("Male").adharNo("ADD222").build();
+        Accused kiruthika = Accused.builder().accusedName("KIRUTHIKA").age(2).gender("Female").adharNo("GTT").build();
+        Accused vela = Accused.builder().accusedName("VELAYUTHAM").age(5).gender("Male").adharNo("HTYU").build();
+        Accused manoj = Accused.builder().accusedName("MANOJ").age(3).gender("Male").adharNo("TYUUII").build();
+
 
         List<Accused> accusedLst = Arrays.asList(ilan,gokul,kiruthika,vela,manoj);
 

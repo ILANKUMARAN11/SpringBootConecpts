@@ -3,6 +3,10 @@ package com.ilan.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -13,6 +17,10 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @JsonIgnoreProperties(value = { "primaryKey" }) //json ignore at class level
 @Entity
 public class Crime {
@@ -39,51 +47,5 @@ public class Crime {
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date arrestedOn;
-	
-	public Crime(){}
-	
-	public Crime(String accusedName,String crime,int crimeCount,Date arrestedOn){
-		this.accusedName=accusedName;
-		this.crime=crime;
-		this.crimeCount=crimeCount;
-		this.arrestedOn=arrestedOn;
-	}
-	
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getAccusedName() {
-		return accusedName;
-	}
-	public void setAccusedName(String accusedName) {
-		this.accusedName = accusedName;
-	}
-	public Date getArrestedOn() {
-		return arrestedOn;
-	}
-	public void setArrestedOn(Date arrestedOn) {
-		this.arrestedOn = arrestedOn;
-	}
-	public String getCrime() {
-		return crime;
-	}
-	public void setCrime(String crime) {
-		this.crime = crime;
-	}
 
-	public int getCrimeCount() {
-		return crimeCount;
-	}
-
-	public void setCrimeCount(int crimeCount) {
-		this.crimeCount = crimeCount;
-	}
-	
-	
-	
-	
 }
