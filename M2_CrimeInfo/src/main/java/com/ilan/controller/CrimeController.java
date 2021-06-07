@@ -30,7 +30,7 @@ public class CrimeController implements CrimeApi{
     }
 
     @Override
-    public List<Crime> crimeCountGreaterThan(int count)
+    public List<Crime> crimeCountGreaterThan(Integer count)
     {
         return accusedService.crimeCountGreaterThan(count);
     }
@@ -38,7 +38,7 @@ public class CrimeController implements CrimeApi{
 
 
     @Override
-    public List<Crime> findByAccusedNameAndCrimeCount(String name,int count)
+    public List<Crime> findByAccusedNameAndCrimeCount(String name,Integer count)
     {
         return accusedService.findByAccusedNameAndCrimeCount(name,count);
     }

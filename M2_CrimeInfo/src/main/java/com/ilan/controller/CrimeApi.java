@@ -41,7 +41,7 @@ public interface CrimeApi {
 			@ApiResponse(code = 403, message = "Forbidden access !!!"),
 			@ApiResponse(code = 200, message = "Successful retrieval !!!", responseContainer = "List of Crime", response = Crime[].class) })
 	 	@GetMapping(value = "/count/{countNo}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
-	    public List<Crime> crimeCountGreaterThan(@ApiParam(value = "Crime Count as input", required = true, defaultValue = "2") @PathVariable("countNo") int count);
+	    public List<Crime> crimeCountGreaterThan(@ApiParam(value = "Crime Count as input", required = true, example = "2") @PathVariable("countNo") Integer count);
 
 
 
@@ -53,7 +53,7 @@ public interface CrimeApi {
 			@ApiResponse(code = 403, message = "Forbidden access !!!"),
 			@ApiResponse(code = 200, message = "Successful retrieval !!!", responseContainer = "List of Crime", response = Crime[].class) })
 	 	@GetMapping(value = "/name/count/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
-	    public List<Crime> findByAccusedNameAndCrimeCount(@ApiParam(value = "Accused name as input", required = true, defaultValue = "ILAN")  @RequestParam("accusedName") String name, @ApiParam(value = "Crime Count as input", required = true, defaultValue = "1") @RequestParam(value = "arrestedCount") int count);
+	    public List<Crime> findByAccusedNameAndCrimeCount(@ApiParam(value = "Accused name as input", required = true, defaultValue = "ILAN")  @RequestParam("accusedName") String name, @ApiParam(value = "Crime Count as input", required = true, example = "1") @RequestParam(value = "arrestedCount") Integer count);
 
 
 	@ApiResponses(value = {
