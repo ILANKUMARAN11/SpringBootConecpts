@@ -46,59 +46,6 @@
 
 	<dependencies>
 
-		<!--  For Configuration Server -->
-		<!-- <dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
-		</dependency> -->
-		
-		
-		<!--  For Spring boot Admin Client -->
-		<!-- <dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-client</artifactId>
-		</dependency> -->
-		
-		
-		<!--  For Zuul Proxy api-Gateway -->
-		<!-- <dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-		</dependency> -->
-
-		
-		
-		<!--  For Eureka Server -->
-		<!-- <dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-		</dependency> -->
-		
-		
-		<!--  For Eureka Client -->
-		<!-- <dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency> -->
-		
-		
-		
-		<!--  For Spring security -->
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency> -->
-
-		
-
-
-
-
 	</dependencies>
 
 
