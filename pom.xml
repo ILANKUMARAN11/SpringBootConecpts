@@ -12,7 +12,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ilan</groupId>
-	<artifactId>SpringBootConcepts</artifactId>
+	<artifactId>SpringBoot_Topics</artifactId>
 	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	
