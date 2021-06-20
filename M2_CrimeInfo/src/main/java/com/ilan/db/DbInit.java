@@ -4,15 +4,21 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.ilan.entity.Crime;
 import com.ilan.repository.CrimeRepo;
 
 @Service
+@Slf4j
 public class DbInit implements CommandLineRunner {
+
+    @Autowired
+    private ApplicationContext appContext;
 
     @Autowired
     private CrimeRepo crimeRepo;
@@ -21,7 +27,14 @@ public class DbInit implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+        String[] beans = appContext.getBeanDefinitionNames();
+        Arrays.stream(beans)
+                .filter(bean->appContext.getBean(bean).getClass().getName().startsWith("com.ilan"))
+                .sorted()
+                .forEach(bean->{
+                    log.info(">>>>>>>>>>"+bean + " of Type :: " + appContext.getBean(bean).getClass().getName());
+                });
+
         // Delete all
         this.crimeRepo.deleteAll();
 

@@ -6,18 +6,33 @@ import java.util.List;
 import com.ilan.dao.entity.Accused;
 import com.ilan.dao.repository.AccusedRepo;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class DbInit implements CommandLineRunner {
+
+    @Autowired
+    private ApplicationContext appContext;
 
     @Autowired
     private AccusedRepo accusedRepo;
 
     @Override
     public void run(String... args) {
+
+        String[] beans = appContext.getBeanDefinitionNames();
+        Arrays.stream(beans)
+				.filter(bean->appContext.getBean(bean).getClass().getName().startsWith("com.ilan"))
+				.sorted()
+				.forEach(bean->{
+					log.info(">>>>>>>>>>"+bean + " of Type :: " + appContext.getBean(bean).getClass().getName());
+				});
+
         // Delete all
         this.accusedRepo.deleteAll();
 
