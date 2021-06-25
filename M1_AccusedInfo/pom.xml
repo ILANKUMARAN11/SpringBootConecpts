@@ -7,7 +7,7 @@
 		<groupId>com.ilan</groupId>
 		<artifactId>SpringBoot_Topics</artifactId>
 		<version>0.0.1</version>
-		<relativePath> ../</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
@@ -110,6 +110,8 @@
 			<artifactId>springfox-data-rest</artifactId>
 			<version>${swagger}</version>
 		</dependency>
+
+
 
 
 	</dependencies>
