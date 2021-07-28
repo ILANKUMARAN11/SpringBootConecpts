@@ -19,7 +19,7 @@ public class CrimeRestService {
     @Autowired
     RestTemplate restTemplate;
 
-    private String crimeMicroService="http://MicroServiceTwo";
+    private String crimeMicroService="http://Crime";
 
 
     @HystrixCommand(fallbackMethod ="crimeLstFallback" ,commandProperties = {
