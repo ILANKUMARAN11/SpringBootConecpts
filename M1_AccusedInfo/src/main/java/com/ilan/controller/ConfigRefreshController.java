@@ -46,7 +46,6 @@ public class ConfigRefreshController {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);
-
         ResponseEntity<String[]> rs = restTemplate.exchange("http://Accused/actuator/refresh", HttpMethod.POST,entity,String[].class);
         return Arrays.asList(rs.getBody());
     }
