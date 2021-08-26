@@ -19,6 +19,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 public class MicroServiceOne extends SpringBootServletInitializer {
 
+
+	//org.springframework.boot.autoconfigure.EnableAutoConfiguration=\com.baeldung.autoconfiguration.MySQLAutoconfiguration
+
+	//Ordering of your configuration class using the Property file
+	//org.springframework.boot.autoconfigure.EnableAutoConfiguration=\your.package.AutoConfig1,your.package.AutoConfig2
+
 	public static void main(String[] args) {
 		SpringApplication.run(new Class[]{MicroServiceOne.class, RestTemplateConfig.class, LogAspect.class}, args);
 	}
