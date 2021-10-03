@@ -6,6 +6,10 @@ spring:
         name: service-registry-server
     jmx:
         default-domain: service-registry-server
+    security:
+        user:
+            name: ilan
+            password: ilan
     boot:
         ######################## Spring Boot Admin configuration ########################
         admin:
