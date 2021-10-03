@@ -1,0 +1,44 @@
+server:
+    port: 8079
+spring:
+    application:
+        name: ZuulApiGateWaY
+    jmx:
+        default-domain: ZuulApiGateWaY
+    #Monitoring the Microservices in time Interval
+    boot:
+        admin:
+            monitor:
+                status-interval: 1000
+
+######################## Eureka Server Configuration ########################
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+    instance:
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        lease-renewal-interval-in-seconds: 10
+
+
+######################## ACTUATOR ########################
+management:
+    endpoint:
+        #Whether to exposure all endpoints by default
+        enabled-by-default: false
+        #If all endPoints where disable by default, so we have to decide endpoints like info, metrics to be enabled
+        info:
+            enabled: true
+        metrics:
+            enabled: true
+        shutdown:
+            enabled: true
+    endpoints:
+        jmx:
+            exposure:
+                include: '*'
+                #exclude: '*'
+        web:
+            exposure:
+                include: info,health,refresh,env,routes,metrics
+                #exclude: '*'
