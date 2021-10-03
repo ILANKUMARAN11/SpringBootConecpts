@@ -1,18 +1,12 @@
-eureka:
-    client:
-        fetch-registry: true
-        register-with-eureka: false
-        serviceUrl:
-            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-    instance:
-        hostname: localhost
 server:
     port: 8761
 spring:
     application:
         name: service-registry-server
+    jmx:
+        default-domain: service-registry-server
     boot:
-        admin:
+        admin: ######################## Spring Boot Admin configuration ########################
             auto-deregistration: false
             auto-registration: true
             client:
@@ -21,5 +15,14 @@ spring:
             register-once: false
             url: http://localhost:8077
             username: admin
-    jmx:
-        default-domain: service-registry-server
+
+
+eureka: # Configure this Discovery Server
+    instance:
+        hostname: localhost
+    client:
+        fetch-registry: true
+        register-with-eureka: false
+        serviceUrl:
+            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
