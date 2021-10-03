@@ -29,7 +29,8 @@ spring:
                     username:
                     password:
     boot:
-        admin: ######################## Spring Boot Admin configuration ########################
+        ######################## Spring Boot Admin configuration ########################
+        admin:
             auto-deregistration: false
             auto-registration: true
             client:
@@ -39,10 +40,13 @@ spring:
             url: http://localhost:8077
             username: admin
 
-management: ######################## ACTUATOR ########################
+######################## ACTUATOR ########################
+management:
     endpoint:
-        enabled-by-default: false #Whether to exposure all endpoints by default
-        info: #If all endPoints where disable by default, so we have to decide endpoints like info, metrics to be enabled
+        #Whether to exposure all endpoints by default
+        enabled-by-default: false
+        #If all endPoints where disable by default, so we have to decide endpoints like info, metrics to be enabled
+        info:
             enabled: true
         metrics:
             enabled: true
@@ -58,7 +62,8 @@ management: ######################## ACTUATOR ########################
                 include: info,health,refresh,env
                 #exclude: '*'
 
-eureka: ######################## Eureka Server Configuration ########################
+######################## Eureka Server Configuration ########################
+eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka/

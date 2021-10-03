@@ -7,7 +7,8 @@ spring:
     jmx:
         default-domain: service-registry-server
     boot:
-        admin: ######################## Spring Boot Admin configuration ########################
+        ######################## Spring Boot Admin configuration ########################
+        admin:
             auto-deregistration: false
             auto-registration: true
             client:
@@ -18,12 +19,14 @@ spring:
             username: admin
 
 
-eureka: # Configure this Discovery Server
+
+# Configure this Discovery Server
+eureka:
     instance:
         hostname: localhost
     client:
-        fetch-registry: true
-        register-with-eureka: false
+        registerWithEureka: false
+        fetchRegistry: false
         serviceUrl:
             defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
