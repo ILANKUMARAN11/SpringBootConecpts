@@ -11,6 +11,7 @@ zuul:
         connect-timeout-millis: 5000
         connection-request-timeout-millis: 6000
         socket-timeout-millis: 60000
+    #Common prefix for all API Url(Something like context path)
     prefix: /api
     ribbon:
         eager-load:
