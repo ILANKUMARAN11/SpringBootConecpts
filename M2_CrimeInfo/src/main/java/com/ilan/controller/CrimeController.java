@@ -2,6 +2,7 @@ package com.ilan.controller;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import com.ilan.service.CrimeService;
 
 import io.swagger.annotations.ApiParam;
 
+@Slf4j
 @RestController
 @RequestMapping("/crime")
 public class CrimeController implements CrimeApi{
@@ -25,8 +27,10 @@ public class CrimeController implements CrimeApi{
     @Override
     @GetMapping(value = "/name/{name}/ilan.brio",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Crime> findByAccusedName(@ApiParam(value = "Accused name as input", required = true, defaultValue = "ILAN") @PathVariable("name") String name){
-
-        return accusedService.findByAccusedName(name);
+        log.info("Microservice2 Load Balancing");
+        List<Crime> crimeList =accusedService.findByAccusedName(name);
+        log.info(crimeList.toString());
+        return crimeList;
     }
 
     @Override

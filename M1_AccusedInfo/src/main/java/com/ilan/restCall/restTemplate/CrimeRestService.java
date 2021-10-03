@@ -55,13 +55,11 @@ public class CrimeRestService {
     }
 
 
-    private CrimeVo crimeFallback(CrimeVo crime)
-    {
+    private CrimeVo crimeFallback(CrimeVo crime) {
         return new CrimeVo("RestTemplateDummy","RestTemplateDummy",0,new Date());
     }
 
-    private List<CrimeVo> crimeLstFallback(String name)
-    {
+    private List<CrimeVo> crimeLstFallback(String name) {
         return Arrays.asList(new CrimeVo("RestTemplateDummy","RestTemplateDummy",0,new Date()));
     }
 }

@@ -22,12 +22,12 @@ public class RestTemplateConfig
 	@LoadBalanced
 	@Bean
 	RestTemplate restTemplate(){
-		HttpComponentsClientHttpRequestFactory clientHttpRequestFactory=new HttpComponentsClientHttpRequestFactory();
-		clientHttpRequestFactory.setConnectTimeout(10000);
-		clientHttpRequestFactory.setReadTimeout(10000);
-		return new RestTemplate(clientHttpRequestFactory);
+//		HttpComponentsClientHttpRequestFactory clientHttpRequestFactory=new HttpComponentsClientHttpRequestFactory();
+//		clientHttpRequestFactory.setConnectTimeout(10000);
+//		clientHttpRequestFactory.setReadTimeout(10000);
+//		return new RestTemplate(clientHttpRequestFactory);
 
-		//return new RestTemplate();
+		return new RestTemplate();
 	}
 
 	@Autowired

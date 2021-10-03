@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import com.ilan.service.AccusedService;
 
 import io.swagger.annotations.Api;
 
+@Slf4j
 @Api(value = "CrimeVo", description = "ACCUSED DATA INFO",position = 66)
 @RestController
 @RequestMapping("/accused")
@@ -34,16 +36,20 @@ public class AccusedController implements AccusedApi {
 	CrimeFeignClient crimeFeign;
 
 	@Autowired
-    CrimeRestService crimeRestTemplate;
+    CrimeRestService crimeRestService;
+
 
 
 	@Override
 	public Map findByAccusedNameRestTemplate(@PathVariable("name") String name)
 	{
+		log.info("Microservice1 Load Balancing");
 		Map mp=new HashMap();
 		List<Accused> accusedVoList=accusedService.findByAccusedName(name);
 		mp.put("AccusedVo Info",accusedVoList);
-		mp.put("CrimeVo Info",crimeRestTemplate.findByCrimeAccusedNameOnly(name));
+		List<CrimeVo> crimeVoList = crimeRestService.findByCrimeAccusedNameOnly(name);
+		log.info(crimeVoList.toString());
+		mp.put("CrimeVo Info",crimeRestService.findByCrimeAccusedNameOnly(name));
 		return mp;
 	}
 
@@ -65,7 +71,7 @@ public class AccusedController implements AccusedApi {
 	{
 		Map mp=new HashMap();
 		Accused accusedVo=accusedService.save(accusedCrimeVo.getAccused());
-		CrimeVo crime=crimeRestTemplate.saveByCrime(accusedCrimeVo.getCrime());
+		CrimeVo crime=crimeRestService.saveByCrime(accusedCrimeVo.getCrime());
 		mp.put("AccusedVo SAVED",accusedVo);
 		mp.put("CrimeVo SAVED",crime);
 		return mp;

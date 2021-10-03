@@ -5,6 +5,8 @@ import com.ilan.configuration.TestRefreshConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
+@RefreshScope
 public class ConfigRefreshController {
 
     @Autowired
@@ -29,9 +32,8 @@ public class ConfigRefreshController {
     TestRefreshConfiguration testRefreshConfiguration;
 
 
-    @Autowired
-    @Qualifier("testString")
-    String name;
+    @Value("${test.property:null}")
+    private String name;
 
     @GetMapping("/refresh/newValue/")
     public String getRefreshedValue(){
