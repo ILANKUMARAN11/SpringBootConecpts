@@ -10,9 +10,9 @@ spring:
 #                    native:
 #                        searchLocations: classpath:/config,file:${server-location},file:///${Linux-pc-location},file:///${windows-pc-location},file:///${mac-pc-location}
     application:
-        name: configuration-management-server
+        name: configurationServer
     jmx:
-        default-domain: configuration-management-server
+        default-domain: configurationServer
     security:
         user:
             name: ilan
