@@ -19,6 +19,7 @@ spring:
             password: ilan
     cloud:
         config:
+            enabled: true
             server:
                 git:
                     force-pull: true
