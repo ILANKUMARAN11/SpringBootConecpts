@@ -1,0 +1,21 @@
+server:
+    port: 8010
+
+spring:
+    application:
+        name: flights
+    jmx:
+        default-domain: flights
+    profiles:
+            active: default
+    cloud:
+#        import-check:
+#            enabled: true
+        config:
+            discovery:
+                enabled: true
+            serviceId: configserver
+#            enabled: false
+#            uri: http://localhost:8888
+            username: oneTransit
+            password: oneTransit
