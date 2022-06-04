@@ -25,20 +25,18 @@ public class ConfigRefreshController {
     RestTemplate restTemplate;
 
 
-//    @Value("${test.property}")
-//    public String testProperty;
+    @Value("${test.property:EmptyValue}")
+    public String testProperty;
 
     @Autowired
     TestRefreshConfiguration testRefreshConfiguration;
 
 
-    @Value("${test.property:null}")
-    private String name;
-
     @GetMapping("/refresh/newValue/")
     public String getRefreshedValue(){
-        log.info(">>>>>"+testRefreshConfiguration);
-        return testRefreshConfiguration.getName()+" "+name;
+        //configRefresh();
+        //log.info(">>>>>"+testRefreshConfiguration);
+        return testRefreshConfiguration.getName()+" "+testProperty;
     }
 
 

@@ -29,6 +29,8 @@
 		<spring-cloud.version>Hoxton.SR11</spring-cloud.version>
 		<spring-boot-admin.version>2.3.1</spring-boot-admin.version>
 		<swagger>2.10.0</swagger>
+		<docker-maven-plugin>1.4.3</docker-maven-plugin>
+		<docker-user-name>ilankumaran11</docker-user-name>
 	</properties>
 	
 	

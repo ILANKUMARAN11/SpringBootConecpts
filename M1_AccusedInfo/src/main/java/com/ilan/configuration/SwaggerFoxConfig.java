@@ -33,7 +33,7 @@ public class SwaggerFoxConfig
         return new ApiInfo(
                 "Accused REST API",
                 "Accused description of API.",
-                "V1",
+                "2.0",
                 "Terms of service",
                 new Contact("ILAN KUMARAN", "www.google.com", "kumaranilan@yahoo.com"),
                 "License of API", "API license URL", Collections.emptyList());
