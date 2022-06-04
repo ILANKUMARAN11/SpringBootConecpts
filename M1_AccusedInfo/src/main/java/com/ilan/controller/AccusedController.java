@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ilan.model.TestModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -76,14 +75,6 @@ public class AccusedController implements AccusedApi {
 		mp.put("AccusedVo SAVED",accusedVo);
 		mp.put("CrimeVo SAVED",crime);
 		return mp;
-	}
-
-	@GetMapping(value = "/test/transient")
-	public TestModel testTransient(){
-		return TestModel.builder()
-				.name("Test")
-				.delta("test")
-				.build();
 	}
 
 
