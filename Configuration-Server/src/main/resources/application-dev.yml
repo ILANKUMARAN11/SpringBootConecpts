@@ -1,0 +1,75 @@
+server:
+    port: 8888
+
+spring:
+#    profiles:
+#        active: native
+#        cloud:
+#            config:
+#                server:
+#                    native:
+#                        searchLocations: classpath:/config,file:${server-location},file:///${Linux-pc-location},file:///${windows-pc-location},file:///${mac-pc-location}
+    application:
+        name: configurationServer
+    jmx:
+        default-domain: configurationServer
+    security:
+        user:
+            name: ilan
+            password: ilan
+    cloud:
+        config:
+            enabled: true
+            server:
+                git:
+                    force-pull: true
+                    search-paths: Accused,Crime,WebFlux-Producer,WebFlux-Consumer
+                    skip-ssl-validation: true
+                    timeout: 4
+                    uri: https://github.com/ILANKUMARAN11/ConfigServer_AppProperties.git
+                    username:
+                    password:
+    boot:
+        ######################## Spring Boot Admin configuration ########################
+        admin:
+            auto-deregistration: false
+            auto-registration: true
+            client:
+                enabled: true
+            password: admin
+            register-once: false
+            url: http://localhost:8077
+            username: admin
+
+######################## ACTUATOR ########################
+management:
+    endpoint:
+        #Whether to exposure all endpoints by default
+        enabled-by-default: false
+        #If all endPoints where disable by default, so we have to decide endpoints like info, metrics to be enabled
+        info:
+            enabled: true
+        metrics:
+            enabled: true
+        shutdown:
+            enabled: true
+    endpoints:
+        jmx:
+            exposure:
+                include: '*'
+                #exclude: '*'
+        web:
+            exposure:
+                include: info,health,refresh,env
+                #exclude: '*'
+
+######################## Eureka Server Configuration ########################
+eureka:
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka,http://eureka-1.eureka.default.svc.cluster.local:8761/eureka,http://eureka-2.eureka.default.svc.cluster.local:8761/eureka
+    instance:
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        lease-renewal-interval-in-seconds: 10
