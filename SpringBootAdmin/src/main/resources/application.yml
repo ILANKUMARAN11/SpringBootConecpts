@@ -1,10 +1,10 @@
 server:
-    port: 8079
+    port: 8077
 spring:
     application:
-        name: ZuulApiGateWaY
+        name: SpringBootAdmin
     jmx:
-        default-domain: ZuulApiGateWaY
+        default-domain: SpringBootAdmin
     #Monitoring the Microservices in time Interval
     boot:
         admin:
