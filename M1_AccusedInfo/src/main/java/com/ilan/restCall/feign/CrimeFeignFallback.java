@@ -14,22 +14,22 @@ public class CrimeFeignFallback implements CrimeFeignClient {
 
     public List<CrimeVo> crimeCountGreaterThan(int count)
     {
-        return crimeLstFallback();
+        return Arrays.asList(crimeFallback());
     }
 
 
     public List<CrimeVo> findByAccusedName(String name){
-        return crimeLstFallback();
+        return Arrays.asList(crimeFallback());
     }
 
 
     public List<CrimeVo> findByAccusedNameAndCrimeCount(String name, int count){
-        return crimeLstFallback();
+        return Arrays.asList(crimeFallback());
     }
 
 
     public List<CrimeVo> saveAllCrime(List<CrimeVo> accused){
-        return crimeLstFallback();
+        return Arrays.asList(crimeFallback());
     }
 
 
@@ -42,8 +42,4 @@ public class CrimeFeignFallback implements CrimeFeignClient {
         return new CrimeVo("Feign-Dummy","Feign-Dummy",0,new Date());
     }
 
-    private List<CrimeVo> crimeLstFallback()
-    {
-        return Arrays.asList(new CrimeVo("Feign-Dummy","Feign-Dummy",0,new Date()));
-    }
 }
